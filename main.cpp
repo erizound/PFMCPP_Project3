@@ -116,6 +116,18 @@ send me a DM to check your pull request
  example:  
 
 //1) write out, in plain-english, 5 traits and 3 things it can do.
+Audio processor
+1)Front light
+2)Meter
+3)Knobs
+4)input voltage
+5)Is hot
+
+
+1)Saturate
+2)Reduce volume
+3)Delay a signal
+
 Car Wash   
 5 properties:
     1) vacuum cleaners
@@ -129,6 +141,8 @@ Car Wash
     2) charge customer
     3) detail the car interior
  */
+
+
 struct CarWash //2)        
 {
     //2) has vacuum cleaners
@@ -154,6 +168,7 @@ struct CarWash //2)
         void fillTank(double fuelAmountInGallons = 2.0);   
     };
 
+
     /* 
     member functions with a user-defined type as the parameter.
     The user-defined type parameter happens to be the nested class.
@@ -165,12 +180,34 @@ struct CarWash //2)
     float chargeCustomer();
     //2) detail the car interior
     void detailInterior( Car car );
-    
                
     //5) a member variable whose type is a UDT.
     Car carBeingServiced;  
+
 };
 
+    struct compressor
+{
+    bool frontLightVoltage = false;
+    int meter = 1;
+    int knobs = 10;
+    float inputVoltage = 15.4f;
+    bool isHot = false;
+
+    struct DAC
+    {
+        float currentInputVoltage = 3.0f;
+        int availableBits = 24;
+
+        void transformToAnalog(float sampleAmplitude = 0.8f);
+    };
+
+    void Saturate (DAC dac);
+    void reduceVolume(float inputVoltage);
+    void delaySignal(DAC dac);
+
+    DAC DigitalSignal;
+};
 
 /*
 1)
